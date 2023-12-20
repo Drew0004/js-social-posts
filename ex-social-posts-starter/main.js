@@ -8,7 +8,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=15"
         },
         "likes": 80,
-        "created": "2021-06-25"
+        "created": "25-06-2021"
     },
     {
         "id": 2,
@@ -100,9 +100,26 @@ for (let i = 0; i < posts.length; i++){
 
 const myLikeButton = document.querySelectorAll('.js-like-button');
 
+const myLikeCounter = document.querySelectorAll('.js-likes-counter')
+
+const postLikeCount = [];
+
+
 for (let j = 0; j < myLikeButton.length; j++){
     myLikeButton[j].addEventListener('click', function(){
+
+
+        console.log(myLikeButton[j]);
+
+        if(!myLikeButton[j].classList.contains('like-button--liked')){
+            posts[j]['likes']++;
+
+            console.log (posts[j]['likes']);
+        }else{
+            posts[j]['likes']--;
+        }
         myLikeButton[j].classList.toggle('like-button--liked');
+        myLikeCounter[j].innerHTML = posts[j]['likes'];
     });
 }
 
